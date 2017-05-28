@@ -154,14 +154,7 @@ angular.module("foodDelivery").controller("foodDeliveryController", function ($s
 			"cuisine": "chinese"
 		}
 	];
-    // if ($scope.bag == undefined) {
-    //     $scope.bag = [];
-    //     $scope.total = 0;
-    //
-    // }else{
-    //     $scope.bag = $scope.saved;
-    //     $scope.total = $scope.savedTotal;
-    // }
+
     $scope.loadBag = function () {
         $scope.bag = $localStorage.bag;
         $scope.total = $localStorage.total;
@@ -211,7 +204,8 @@ angular.module("foodDelivery").controller("foodDeliveryController", function ($s
 
         if ($scope.bag == undefined) {
             $scope.bag = [];
-            $scope.total = 0;}
+            $scope.total = 0;
+        }
 
         for (var b in $scope.bag) {
             if ($scope.bag[b].foodObj === food) {

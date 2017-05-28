@@ -8,6 +8,7 @@
 	position: relative;
 	padding-top: 60px;
 }
+
 .search{
     width: 600px;
 	text-align: center;
@@ -15,6 +16,7 @@
     margin-left: auto;
 	margin-right: auto;
 }
+
 .row{
     width: 600px;
 	text-align: center;
@@ -23,32 +25,34 @@
 	margin-right: auto;
     top: 20px;
 }
+
 .top{
     padding-top: 15px;
-
 }
+
 .btn{
     color:#0D47A1;
 }
+
 .panel-default{
     background-color: #E0F7FA;
     border: none;
-
-
 }
+
 .rsize{
     text-align: left;
     margin-left: auto;
     margin-right: auto;
     width: 180px;
-
 }
+
 .rsize2{
     text-align: left;
     margin-left: auto;
     margin-right: auto;
     width: 20px;
 }
+
 .ck{
     padding-top: 40px;
     text-align: left;
@@ -58,28 +62,30 @@
 }
 
 .panel-body{
-  color:#0D47A1;
-  background-color:#BBDEFB;
-  margin-left: auto;
-  margin-right: auto;
-  width: 235px;
-
+    color:#0D47A1;
+    background-color:#BBDEFB;
+    margin-left: auto;
+    margin-right: auto;
+    width: 235px;
 }
+
 .small-btn{
     width: 20px;
     height: 20px;
 }
-.scrollit {
-  height:400px;
-  overflow-y:scroll;
-}
-.scrollit2 {
-  direction:ltr;
-  height:200px;
 
-  overflow-y:scroll;
-  direction: rtl;
+.scrollit {
+    height:400px;
+    overflow-y:scroll;
+}
+
+.scrollit2 {
+    direction:ltr;
+    height:200px;
+    overflow-y:scroll;
+    direction: rtl;
  }
+
  .scrollit2 > div {
      direction: ltr;
  }

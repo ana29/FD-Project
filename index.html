@@ -4,16 +4,12 @@
         <meta charset="utf-8">
         <title>Food Delivery</title>
         <script src="lib/angular/angular.js"></script>
-        <script src="lib/angular/angular-route.js"></script>
-        <script src="lib/angular/angular-animate.min.js"></script>
         <script src="lib/ngStorage.min.js"></script>
         <script src="js/controllers/foodDeliveryController.js"></script>
-        <script src="lib/ui-bootstrap-tpls-2.5.0.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="lib/bootstrap/js/bootstrap.js">
         <link rel="stylesheet" type="text/css" href="css/app.css">
 
     </head>
@@ -107,23 +103,24 @@
                                 <div>
                                     <p>Total: {{total | currency:"R$":2}}</p>
                                     <button type="button" class="btn-info" name="buttonChekout" data-toggle="modal" data-target="#chekout-info" >Proceed to chekout</button>
-                                <div class="modal fade" id="chekout-info" role="dialog">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4>Total: {{total | currency:"R$":2}}</h4>
-                                                <div class="modal-body">
-                                                    <div class="row" ng-repeat="item in bag">
-                                                        <h6>{{item.amount}}x {{item.foodObj.title}}</h6>
-                                                    </div>
-                                                    <div>
-                                                        <button type="button" name="confirm" >Confirm</button>
-                                                        <button type="button" name="cancel" data-dismiss="modal">Calcel</button>
+                                    <div class="modal fade" id="chekout-info" role="dialog">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3>Review your order </h3>
+                                                    <h4>Total: {{total | currency:"R$":2}}</h4>
+                                                    <div class="modal-body">
+                                                        <div ng-repeat="item in bag">
+                                                            <h6>{{item.amount}}x {{item.foodObj.title}}</h6>
+                                                        </div>
+                                                        <div>
+                                                            <button class="btn-info" type="button" name="confirm"data-dismiss="modal" ng-click="clearBag()" >Confirm</button>
+                                                            <button class="btn-info" type="button" name="cancel" data-dismiss="modal">Cancel</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
