@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html ng-app="foodDelivery">
+    <head>
+        <meta charset="utf-8">
+        <title>Food Delivery</title>
+        <script src="lib/angular/angular.js"></script>
+        <script src="lib/angular/angular-route.js"></script>
+        <script src="lib/angular/angular-animate.min.js"></script>
+        <script src="lib/ngStorage.min.js"></script>
+        <script src="js/controllers/foodDeliveryController.js"></script>
+        <script src="lib/ui-bootstrap-tpls-2.5.0.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="lib/bootstrap/js/bootstrap.js">
+        <link rel="stylesheet" type="text/css" href="css/app.css">
+
+    </head>
+    <body >
+        <div class= "jumbotron" ng-controller="foodDeliveryController" >
+
+            <div class="search">
+                <input class="form-control" type="text" ng-model="searchCriteria" placeholder="Search"/>
+            </div>
+
+        <div class="row">
+            <div class="col-md-1">
+                <button class = "btn btn-link" ng-click="filterByCuisine={cuisine:''}">
+                   <md-icon class="material-icons md-48">menu</md-icon>
+                   <p>All</p>
+               </button>
+            </div>
+            <div class="col-md-2">
+                <button class = "btn btn-link" ng-click="filterByCuisine={cuisine:'chinese'}">
+                   <md-icon class="material-icons md-48">face</md-icon>
+                   <p>Chinese</p>
+                </button>
+            </div>
+            <div class="col-md-2">
+                <button class = "btn btn-link" ng-click="filterByCuisine={cuisine:'burgers'}">
+                   <md-icon class="material-icons md-48">pets</md-icon>
+                   <p>Burgers</p>
+                 </button>
+            </div>
+            <div class="col-md-2">
+                <button class = "btn btn-link" ng-click="filterByCuisine={cuisine:'salad'}" >
+                   <md-icon class="material-icons md-48">spa</md-icon>
+                   <p>Salad</p>
+                 </button>
+            </div>
+            <div class="col-md-3">
+                <button class = "btn btn-link" ng-click="filterByCuisine={cuisine:'beverage'}">
+                   <md-icon class="material-icons md-48">local_bar</md-icon>
+                   <p>Beverage</p>
+                 </button>
+            </div>
+            <div class="col-md-2">
+                <button class = "btn btn-link" ng-click="filterByCuisine={cuisine:'pizza'}">
+                   <md-icon class="material-icons md-48">panorama_fish_eye</md-icon>
+                   <p>Pizza</p>
+                </button>
+            </div>
+        </div>
+
+            <div class="container">
+                  <div class="row">
+                    <div class="col-md-7">
+                        <div class="scrollit">
+                            <div class="media" ng-repeat="food in foods | filter:searchCriteria | filter:filterByCuisine">
+                                <div class="media-left" >
+                                    <img src="img/image.png" class="media-object" style="width:100px">
+                                </div>
+                                <div class="media-body" >
+                                    <h4>{{food.title}}</h4>
+                                    <h5>{{food.cuisine}}</h5>
+                                    <h6>{{food.price}}</h6>
+                                    <div>
+                                        <button type="button" class="btn-info" name="buttonAddToBag"  ng-click="addToBag(food)" >Add to bag</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                            <div class="col-md-3 top">
+                            <div class="panel-body">
+                                <b>Your bag</b>
+                                    <div class="scrollit2">
+                                        <div class="row rsize" ng-repeat="item in bag">
+                                            <div class="col-md-10">
+                                                <h6>{{item.amount}}x {{item.foodObj.title}}</h6>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div >
+                                                    <button class = "btn btn-link small-btn" ng-click="addToBag(item.foodObj)">
+                                                        <md-icon class="material-icons md-18">add</md-icon>
+                                                    </button>
+                                                </div>
+                                                <div>
+                                                    <button class = "btn btn-link small-btn" ng-click="removeFromBag(item)">
+                                                        <md-icon class="material-icons md-18">remove</md-icon>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div>
+                                    <p>Total: {{total | currency:"R$":2}}</p>
+                                    <button type="button" class="btn-info" name="buttonChekout" data-toggle="modal" data-target="#chekout-info" >Proceed to chekout</button>
+                                <div class="modal fade" id="chekout-info" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4>Total: {{total | currency:"R$":2}}</h4>
+                                                <div class="modal-body">
+                                                    <div class="row" ng-repeat="item in bag">
+                                                        <h6>{{item.amount}}x {{item.foodObj.title}}</h6>
+                                                    </div>
+                                                    <div>
+                                                        <button type="button" name="confirm" >Confirm</button>
+                                                        <button type="button" name="cancel" data-dismiss="modal">Calcel</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
